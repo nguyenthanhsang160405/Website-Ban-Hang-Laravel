@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bài Viết - Tiêu đề bài viết</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right:0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .hero-text {
+      position: relative;
+      color: #fff;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <!-- Thanh điều hướng -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Shop Online</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trang Chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Bài Viết</a></li>
+          <li class="nav-item"><a class="nav-link" href="product_detail.html">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero Banner -->
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Tiêu đề bài viết</h1>
+      <p class="lead">Ngày đăng: 01/03/2025 | Tác giả: Nguyễn Văn A</p>
+    </div>
+  </div>
+  
+  <!-- Nội dung chính -->
+  <div class="container my-5">
+    <div class="row">
+      <!-- Nội dung bài viết -->
+      <div class="col-lg-8">
+        <article>
+          <h2 class="mb-4">Tiêu đề bài viết</h2>
+          <p class="text-muted">Được đăng vào ngày 01/03/2025 bởi Nguyễn Văn A</p>
+          <img src="https://via.placeholder.com/750x300" alt="Hình minh họa" class="img-fluid mb-4">
+          <p>Nội dung bài viết. Đây là phần nội dung chính của bài viết. Bạn có thể thêm nhiều đoạn văn, hình ảnh và các phần tử HTML khác để xây dựng bài viết chi tiết.</p>
+          <p>Thêm nội dung ở đây. Bạn có thể chia thành nhiều đoạn, chèn ảnh hoặc video nếu cần thiết.</p>
+          <h3>Mục lục</h3>
+          <ul>
+            <li>Giới thiệu</li>
+            <li>Nội dung chính</li>
+            <li>Kết luận</li>
+          </ul>
+          <p>Cuối cùng, kết luận bài viết với những suy nghĩ và lời khuyên hữu ích cho người đọc.</p>
+        </article>
+        
+        <!-- Phần bình luận -->
+        <section class="mt-5">
+          <h4>Bình luận</h4>
+          <form class="mb-4">
+            <div class="mb-3">
+              <label for="commentName" class="form-label">Tên của bạn</label>
+              <input type="text" class="form-control" id="commentName" placeholder="Nhập tên của bạn" required>
+            </div>
+            <div class="mb-3">
+              <label for="commentContent" class="form-label">Bình luận</label>
+              <textarea class="form-control" id="commentContent" rows="4" placeholder="Viết bình luận của bạn" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi bình luận</button>
+          </form>
+          <div class="list-group">
+            <div class="list-group-item">
+              <h6 class="mb-1">Nguyễn Văn B</h6>
+              <p class="mb-1">Bài viết rất hay, cảm ơn tác giả đã chia sẻ.</p>
+              <small>01/03/2025</small>
+            </div>
+            <div class="list-group-item">
+              <h6 class="mb-1">Trần Thị C</h6>
+              <p class="mb-1">Tôi rất thích nội dung bài viết này!</p>
+              <small>02/03/2025</small>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Sidebar: Bài viết liên quan -->
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-header">
+            Bài viết liên quan
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="#">Bài viết 1</a></li>
+            <li class="list-group-item"><a href="#">Bài viết 2</a></li>
+            <li class="list-group-item"><a href="#">Bài viết 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center p-3">
+    &copy; 2025 Shop Online. All rights reserved.
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

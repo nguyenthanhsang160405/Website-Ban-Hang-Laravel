@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thêm Người Dùng - Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .sidebar {
+      min-height: 100vh;
+      background: #343a40;
+      color: #fff;
+    }
+    .sidebar a { color: #fff; text-decoration: none; }
+    .sidebar .nav-link.active { background-color: #0d6efd; }
+    .content { padding: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block sidebar">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="admin.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link active" href="user_management.html">Quản lý người dùng</a></li>
+            <li class="nav-item"><a class="nav-link" href="product_management.html">Quản lý sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="order_management.html">Quản lý đơn hàng</a></li>
+            <li class="nav-item"><a class="nav-link" href="reports.html">Báo cáo</a></li>
+            <li class="nav-item"><a class="nav-link" href="settings.html">Cài đặt</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Đăng xuất</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4 content">
+        <h1 class="h2">Chỉnh Sửa Người Dùng</h1>
+        
+        @if(session('success'))
+          <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+        
+        <form method="POST" action="/user/update/{{ $user->id }}">
+          @csrf
+          <div class="mb-3">
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="name" class="form-label">Họ và Tên</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+          </div>
+          <div class="mb-3">
+            @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" disabled>
+          </div>
+          <div class="mb-3">
+            @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="phone" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control" id="phone" name="password" value="{{ old('password') }}">
+          </div>
+          
+          <div class="mb-3">
+            @error('phone')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="text" name="phone" class="form-control" id="phone" value="{{ $user->phone }}">
+          </div>
+          <div class="mb-3">
+            @error('address')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="phone" class="form-label">Địa chỉ</label>
+            <input type="text" name="address" class="form-control" id="phone" value="{{ $user->address }}">
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Vai trò</label>
+            <select class="form-select" id="role" name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Thêm</button>
+          <a href="user_management.html" class="btn btn-secondary">Hủy</a>
+        </form>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
