@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản Phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-center">Thêm Sản Phẩm</h2>
+
+        <!-- Form Thêm Sản Phẩm -->
+        <form id="productForm" class="space-y-4">
+            <div>
+                <label class="block font-medium">Tên sản phẩm:</label>
+                <input type="text" id="productName" class="w-full p-2 border rounded" required>
+            </div>
+            <div>
+                <label class="block font-medium">Mô tả:</label>
+                <textarea id="productDescription" class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div>
+                <label class="block font-medium">Giá (VNĐ):</label>
+                <input type="number" id="productPrice" class="w-full p-2 border rounded" required>
+            </div>
+
+            <!-- Danh sách biến thể -->
+            <div>
+                <h3 class="text-lg font-bold">Danh sách Size, Màu & Số lượng</h3>
+                <table class="w-full border-collapse border border-gray-300 mt-2">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border p-2">Size</th>
+                            <th class="border p-2">Màu</th>
+                            <th class="border p-2">Số lượng</th>
+                            <th class="border p-2">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="variantList"></tbody>
+                </table>
+                <button type="button" onclick="addVariant()" class="mt-2 bg-green-500 text-white px-3 py-2 rounded">+ Thêm biến thể</button>
+            </div>
+
+            <!-- Nút Lưu -->
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Lưu sản phẩm</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let variants = []; // Mảng lưu các biến thể sản phẩm
+
+        function addVariant() {
+            let size = prompt("Nhập size:");
+            let color = prompt("Nhập màu:");
+            let stock = prompt("Nhập số lượng:");
+
+            if (!size || !color || isNaN(stock) || stock < 0) {
+                alert("Vui lòng nhập thông tin hợp lệ!");
+                return;
+            }
+
+            let variant = { size, color, stock: parseInt(stock) };
+            variants.push(variant);
+            renderVariantList();
+        }
+
+        function renderVariantList() {
+            let list = document.getElementById("variantList");
+            list.innerHTML = "";
+            variants.forEach((variant, index) => {
+                let row = `
+                    <tr class="border">
+                        <td class="border p-2">${variant.size}</td>
+                        <td class="border p-2">${variant.color}</td>
+                        <td class="border p-2">${variant.stock}</td>
+                        <td class="border p-2">
+                            <button onclick="removeVariant(${index})" class="bg-red-500 text-white px-3 py-1 rounded">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+                list.innerHTML += row;
+            });
+        }
+
+        function removeVariant(index) {
+            variants.splice(index, 1);
+            renderVariantList();
+        }
+
+        document.getElementById("productForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let product = {
+                name: document.getElementById("productName").value,
+                description: document.getElementById("productDescription").value,
+                price: parseFloat(document.getElementById("productPrice").value),
+                variants
+            };
+
+            console.log("Dữ liệu gửi về backend:", product);
+            alert("Sản phẩm đã được thêm thành công!");
+
+            // Reset form
+            this.reset();
+            variants = [];
+            renderVariantList();
+        });
+    </script>
+</body>
+</html>
